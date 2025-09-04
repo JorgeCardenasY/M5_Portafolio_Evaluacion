@@ -1,94 +1,44 @@
-# 📊 Evaluación de Portafolio: Dominio de Bases de Datos Relacionales
+# 📂 Evaluación de portafolio
 
-## 🎯 Instrucciones Generales
-
-Construye tu proyecto personal implementando progresivamente cada tecnología y competencia técnica adquirida durante el curso. Este trabajo representará una pieza fundamental de tu portafolio profesional, demostrando tu dominio en la gestión de bases de datos relacionales y tus habilidades técnicas.
-
----
-
-## 🚀 Requerimientos Funcionales Mínimos Esperados
-
-### 🔍 1. Fundamentos de Bases de Datos Relacionales
-- **Distinguir** las características, roles y elementos esenciales de las bases de datos relacionales
-- **Describir** los componentes básicos: 
-  - Tablas
-  - Registros 
-  - Campos
-  - Claves primarias y foráneas
-- **Explicar** la gestión y almacenamiento de datos en tablas y el establecimiento de relaciones entre ellas
-
-> **Ejemplo práctico:** Crear una tabla de `clientes` y otra de `pedidos`, relacionándolas mediante claves foráneas.
-
-### 🛢️ 2. Lenguaje Estructurado de Consultas (SQL)
-- **Desarrollar consultas SQL** para obtener información específica utilizando:
-  - `SELECT` 
-  - `WHERE`
-  - `JOIN`
-  - `GROUP BY`
-  - entre otras cláusulas
-
-> **Ejemplo práctico:** Consulta que recupere todos los pedidos realizados por un cliente específico.
-
-### ⚡ 3. Lenguaje de Manipulación de Datos (DML)
-- **Implementar** operaciones de modificación de datos:
-  - `INSERT` (inserción)
-  - `UPDATE` (actualización)
-  - `DELETE` (eliminación)
-
-> **Ejemplo práctico:** Actualizar la dirección de un cliente o eliminar un pedido no procesado.
-
-### 🏗️ 4. Lenguaje de Definición de Datos (DDL)
-- **Utilizar DDL** para crear, modificar y eliminar:
-  - Tablas
-  - Índices
-  - Otros objetos de base de datos
-
-> **Ejemplo práctico:** Crear una tabla de `empleados` con columnas para nombre, salario y fecha de ingreso.
-
-### 📐 5. Modelamiento de Datos
-- **Elaborar modelos de datos** según estándares de modelamiento
-- **Crear diagramas entidad-relación (ER)** para representar estructuras de datos
-
-> **Ejemplo práctico:** Modelar una tienda en línea con entidades para productos, clientes, pedidos y métodos de pago, incluyendo sus relaciones.
+## 📋 Instrucciones
+En función de tu proyecto personal previamente establecido, deberás implementar clase a clase las diferentes tecnologías y competencias técnicas adquiridas a lo largo del curso.
+**💡 Recuerda** que este proyecto irá directamente al registro de evidencia de tu portafolio, el cual deberá demostrar el dominio, competencias técnicas y diferentes habilidades relacionadas con la **gestión de bases de datos relacionales**.
 
 ---
 
-## 📦 Instrucciones de Entrega
+## 🎯 Requerimientos Funcionales Mínimos Esperados
 
-### 🗂️ Estructura del Repositorio GitHub
-```
-proyecto-bdd/
-│
-├── 📁 modelamiento-datos/
-│   ├── diagrama-er.png
-│   └── README.md
-│
-├── 📁 ddl/
-│   ├── creacion-tablas.sql
-│   └── README.md
-│
-├── 📁 dml/
-│   ├── inserciones.sql
-│   ├── actualizaciones.sql
-│   ├── eliminaciones.sql
-│   └── README.md
-│
-├── 📁 consultas-sql/
-│   ├── consultas-ejercicios.sql
-│   └── README.md
-│
-└── README.md (principal)
-```
+### 🗃️ **Bases de datos relacionales**
+- 🔍 **Distinguir** las características, rol y elementos fundamentales de una base de datos relacional para la gestión de la información en una organización.
+- 📊 **Describir** los componentes básicos de una base de datos relacional: **tablas**, **registros**, **campos**, **claves primarias** y **foráneas**.
+- 🔄 **Explicar** cómo se gestionan y almacenan los datos en tablas y cómo se establece la relación entre ellas para satisfacer necesidades organizacionales.
+  **📌 Ejemplo:** Crear una tabla de clientes y otra de pedidos, relacionándolas por una clave foránea.
 
-### 📋 Requisitos de Entrega
-- [ ] **Organización clara** en carpetas temáticas
-- [ ] **Archivos SQL** bien documentados y organizados
-- [ ] **README.md en cada carpeta** explicando:
-  - Propósito del código
-  - Instrucciones de ejecución
-  - Descripción de las consultas
-- [ ] **Mínimo 3 commits** con mensajes descriptivos de los cambios realizados
+### 🔧 **Lenguaje SQL**
+- 📝 **Utilizar** Lenguaje Estructurado de Consultas (**SQL**) para la obtención de información que satisface los requerimientos planteados a partir de un modelo de datos dado.
+- 🔍 **Desarrollar** consultas SQL para obtener información específica de las tablas, utilizando cláusulas como **SELECT**, **WHERE**, **JOIN**, **GROUP BY**, entre otras.
+  **📌 Ejemplo:** Crear una consulta que obtenga todos los pedidos realizados por un cliente específico.
+
+### 🔄 **Lenguaje DML**
+- ✏️ **Utilizar** lenguaje de manipulación de datos (**DML**) para la modificación de los datos existentes en una base de datos dando solución a un problema planteado.
+- 🔄 **Implementar** consultas de inserción (**INSERT**), actualización (**UPDATE**) y eliminación (**DELETE**) para modificar los datos dentro de las tablas.
+  **📌 Ejemplo:** Crear una consulta que actualice la dirección de un cliente en la base de datos o elimine un pedido que no fue procesado.
+
+### 🛠️ **Lenguaje DDL**
+- 🗄️ **Implementar** estructuras de datos relacionales utilizando lenguaje de definición de datos (**DDL**) a partir de un modelo de datos para la creación y mantención de las definiciones de los objetos de una base de datos.
+- 🔧 **Utilizar** el lenguaje DDL para crear, modificar y eliminar tablas, índices y otros objetos dentro de una base de datos.
+  **📌 Ejemplo:** Crear una tabla para almacenar información de empleados, con las columnas correspondientes como nombre, salario y fecha de ingreso.
+
+### 📊 **Modelado de datos**
+- 📈 **Elaborar** un modelo de datos de acuerdo a los estándares de modelamiento para resolver un problema de baja complejidad.
+- 🖼️ **Crear** un diagrama entidad-relación (**ER**) para representar el modelo de datos antes de implementarlo en una base de datos.
+  **📌 Ejemplo:** Crear un modelo de datos para una tienda en línea, que incluya entidades como productos, clientes, pedidos y métodos de pago, y sus respectivas relaciones.
 
 ---
 
-*Este proyecto demostrará tu capacidad para diseñar, implementar y gestionar bases de datos relacionales, una competencia esencial en el desarrollo profesional moderno.* 💫
+## 📤 Entrega
+
+### 🐙 **Repositorio en GitHub:**
+- 📁 **Subir** todos los archivos SQL y diagramas de modelado de datos en carpetas organizadas por tema.
+- 📄 **Incluir** un archivo **README.md** en cada carpeta explicando el propósito del código y cómo ejecutar las consultas.
+- 📝 **Realizar** al menos tres commits documentando los cambios realizados en el código.
