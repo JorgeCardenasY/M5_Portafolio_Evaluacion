@@ -1,0 +1,1 @@
+mover los comentarios explicativos de los archivos a documentos MD , uno por carpeta.
