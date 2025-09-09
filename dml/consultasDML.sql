@@ -12,7 +12,9 @@ CREATE DATABASE m5_portafolio;
 -- Selecciona la base de datos recién creada para trabajar en ella.
 USE m5_portafolio;
 
+
 -- 🛠️ 2. Creación de tablas y definición de esquemas
+
 
 -- 📋 Tabla "clientes":
 -- Crea una tabla llamada "clientes" con los siguientes campos:
@@ -21,61 +23,86 @@ USE m5_portafolio;
 --   - telefono: Teléfono del cliente (cadena de hasta 50 caracteres, no nulo).
 --   - email: Correo electrónico del cliente (cadena de hasta 50 caracteres, puede ser nulo).
 -- Se define "cliente_id" como clave primaria (PRIMARY KEY), lo que garantiza que cada cliente tenga un identificador único.
-CREATE TABLE clientes (
-    cliente_id int NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    telefono VARCHAR(50) NOT NULL,
-    email VARCHAR(50) NULL,
-    PRIMARY KEY (cliente_id)
+
+CREATE TABLE clientes
+(
+  cliente_id int         NOT NULL,
+  nombre     VARCHAR(50) NOT NULL,
+  telefono   VARCHAR(50) NOT NULL,
+  email      VARCHAR(50) NULL    ,
+  PRIMARY KEY (cliente_id)
 );
 
--- 📋 Tabla "pedidos":
--- Crea una tabla llamada "pedidos" con los siguientes campos:
---   - pedido_id: Identificador único del pedido (entero, autoincremental, no nulo).
---   - fecha_hora: Fecha y hora del pedido (formato DATETIME, no nulo).
---   - cliente_id: Identificador del cliente que realizó el pedido (entero, no nulo).
---   - producto_id: Identificador del producto pedido (entero, no nulo).
--- Se define "pedido_id" como clave primaria.
-CREATE TABLE pedidos (
-    pedido_id INT NOT NULL AUTO_INCREMENT,
-    fecha_hora DATETIME NOT NULL,
-    cliente_id int NOT NULL,
-    producto_id INT NOT NULL,
-    PRIMARY KEY (pedido_id)
-);
--- Se  añade una restricción UNIQUE a "pedido_id" para asegurar que sólo existan registros unicos que identifiquen a los pedidos.
-ALTER TABLE pedidos ADD CONSTRAINT UQ_pedido_id UNIQUE (pedido_id);
-
--- 📋 Tabla "productos":
--- Crea una tabla llamada "productos" con los siguientes campos:
---   - producto_id: Identificador único del producto (entero, no nulo).
---   - nombre: Nombre del producto (cadena de hasta 50 caracteres, no nulo).
---   - categoria: Categoría del producto (cadena de hasta 50 caracteres, no nulo).
--- Se define "producto_id" como su clave primaria.
-CREATE TABLE productos (
-    producto_id INT NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    categoria VARCHAR(50) NOT NULL,
-    PRIMARY KEY (producto_id)
+CREATE TABLE empleado
+(
+  empleado_id   INT           NOT NULL,
+  nombre        VARCHAR(50)   NOT NULL,
+  salario       DECIMAL(10,2) NOT NULL,
+  fecha_ingreso DATE          NOT NULL,
+  PRIMARY KEY (empleado_id)
 );
 
--- Añade restricciones UNIQUE para evitar duplicados en "producto_id" y "nombre".
+CREATE TABLE metodo_pago
+(
+  metodo_id     INT         NOT NULL,
+  metodo_nombre VARCHAR(50) NOT NULL,
+  activo        BOOLEAN     NOT NULL,
+  PRIMARY KEY (metodo_id)
+);
+
+ALTER TABLE metodo_pago
+  ADD CONSTRAINT UQ_metodo_id UNIQUE (metodo_id);
+
+ALTER TABLE metodo_pago
+  ADD CONSTRAINT UQ_metodo_nombre UNIQUE (metodo_nombre);
+
+CREATE TABLE pedidos
+(
+  pedido_id   INT      NOT NULL AUTO_INCREMENT,
+  fecha_hora  DATETIME NOT NULL,
+  cliente_id  int      NOT NULL,
+  producto_id INT      NOT NULL,
+  empleado_id INT      NOT NULL,
+  metodo_id   INT      NOT NULL,
+  PRIMARY KEY (pedido_id)
+);
+
+ALTER TABLE pedidos
+  ADD CONSTRAINT UQ_pedido_id UNIQUE (pedido_id);
+
+CREATE TABLE productos
+(
+  producto_id INT         NOT NULL,
+  nombre      VARCHAR(50) NOT NULL,
+  categoria   VARCHAR(50) NOT NULL,
+  PRIMARY KEY (producto_id)
+);
+
 ALTER TABLE productos
-ADD CONSTRAINT UQ_producto_id UNIQUE (producto_id);
+  ADD CONSTRAINT UQ_producto_id UNIQUE (producto_id);
 
-ALTER TABLE productos ADD CONSTRAINT UQ_nombre UNIQUE (nombre);
+ALTER TABLE productos
+  ADD CONSTRAINT UQ_nombre UNIQUE (nombre);
 
---
--- 🔗 3. Definición de relaciones entre tablas (claves primarias y foráneas)
---
--- Establece una relación entre la tabla "pedidos" y "clientes":
---   - "cliente_id" en "pedidos" debe existir en "cliente_id" de "clientes".
 ALTER TABLE pedidos
-ADD CONSTRAINT FK_clientes_TO_pedidos FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id);
--- Establece una relación entre la tabla "pedidos" y "productos":
---   - "producto_id" en "pedidos" debe existir en "producto_id" de "productos".
+  ADD CONSTRAINT FK_clientes_TO_pedidos
+    FOREIGN KEY (cliente_id)
+    REFERENCES clientes (cliente_id);
+
 ALTER TABLE pedidos
-ADD CONSTRAINT FK_productos_TO_pedidos FOREIGN KEY (producto_id) REFERENCES productos (producto_id);
+  ADD CONSTRAINT FK_productos_TO_pedidos
+    FOREIGN KEY (producto_id)
+    REFERENCES productos (producto_id);
+
+ALTER TABLE pedidos
+  ADD CONSTRAINT FK_empleado_TO_pedidos
+    FOREIGN KEY (empleado_id)
+    REFERENCES empleado (empleado_id);
+
+ALTER TABLE pedidos
+  ADD CONSTRAINT FK_metodo_pago_TO_pedidos
+    FOREIGN KEY (metodo_id)
+    REFERENCES metodo_pago (metodo_id);
 
 --
 -- 📥 4. Inserción de datos en las tablas
